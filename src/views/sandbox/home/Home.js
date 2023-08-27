@@ -151,28 +151,16 @@ export default function Home(props) {
         });
     }
     const deleteMethod = (item) => {
-        if (item.grade === 1) {
-            console.log(item);
-            setDataSource(dataSource.filter(data => data.id !== item.id));
-            axios.delete(`http://localhost:5000/rights/${item.id}`);
-        } else {
-            const rightId = item.rightId;
-            let list = dataSource.filter(data => data.id === rightId)
-            console.log(list)
-            list[0].children = list[0].children.filter(data => data.id !== item.id);
-            // console.log(list)
-            // console.log(item.id)
-            // console.log(list[0].children)
-            const newData = dataSource.filter(() => true);
-            newData.forEach(item => {
-                if (item.id === rightId) {
-                    item.children = list[0].children;
-                }
-            })
-            setDataSource(newData);
-            //axios.delete(`http://localhost:5000/children/${item.id}`);
+
+        //dataSource更新
+        setDataSource(dataSource.filter((data)=>data.empCd!==item.empCd))
+        //database更新
+        axios.delete(`/employee/delete/${item.empCd}`).then(res=>{
+            message.success("削除成功")
+        })
+
         }
-    }
+
 
 
     const logout = () => {
