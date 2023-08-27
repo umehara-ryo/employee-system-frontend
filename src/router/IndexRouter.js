@@ -28,7 +28,6 @@ export default function IndexRouter() {
                                 <NewsSandBox></NewsSandBox>:
                                 <Redirect to="/login"/>
                         }/>
-
             </Switch>
         </HashRouter>
         </div>
