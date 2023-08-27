@@ -18,6 +18,7 @@ export default function Home(props) {
 
     const addForm = useRef(null);
     const updateForm = useRef(null);
+    const findInput = useRef(null);
 
     useEffect(() => {
         axios.get('/employee/search').then(res => {
@@ -36,7 +37,7 @@ export default function Home(props) {
                 color: "#337ab7"
             }}>社員番号</div>,
             dataIndex: 'empCd',
-            align:"center",
+            align: "center",
             render: (empCd) => {
                 return <div style={{
                     color: "#337ab7"
@@ -51,7 +52,7 @@ export default function Home(props) {
                 //backgroundImage: `url(${BackGround})`,
                 color: "#337ab7"
             }}>名前</div>,
-            align:"center",
+            align: "center",
             dataIndex: 'name',
             render: (name) => {
                 return <i style={{
@@ -69,10 +70,10 @@ export default function Home(props) {
                 color: "#337ab7"
             }}>生年月日</div>,
             dataIndex: 'birthday',
-            align:"center",
+            align: "center",
             render: (birthday) => {
                 return <div style={{
-                    color:'#337ab7'
+                    color: '#337ab7'
                 }}>{birthday}</div>
             }
         },
@@ -85,12 +86,12 @@ export default function Home(props) {
                 //backgroundImage: `url(${BackGround})`,
                 color: "#337ab7"
             }}>国籍</div>,
-            align:"center",
+            align: "center",
             dataIndex: 'nationalityName',
             render: (nationalityName) => {
                 return <div style={{
-                    color:'#337ab7'
-                }} >{nationalityName}</div>
+                    color: '#337ab7'
+                }}>{nationalityName}</div>
             }
         },
         {
@@ -101,7 +102,7 @@ export default function Home(props) {
                 //backgroundImage: `url(${BackGround})`,
                 color: "#337ab7"
             }}>性別</div>,
-            align:"center",
+            align: "center",
             dataIndex: 'genderName',
             render: (genderName) => {
                 return <Tag color={genderName === '女性' ? 'lightpink' : '#337ab7'}>{genderName}</Tag>
@@ -115,11 +116,11 @@ export default function Home(props) {
                 //backgroundImage: `url(${BackGround})`,
                 color: "#337ab7"
             }}>操作</div>,
-            align:"center",
+            align: "center",
             render: (item) => {
                 return <div>
 
-                    <Button type="primary" style={{backgroundColor:'#337ab7'}}>変更</Button>
+                    <Button type="primary" style={{backgroundColor: '#337ab7'}}>変更</Button>
 
                     <Button danger onClick={() => confirmDelete(item)}>削除</Button>
                 </div>
@@ -169,19 +170,19 @@ export default function Home(props) {
     }
 
     const addFormOk = () => {
-        addForm.current.validateFields().then(value=>{
+        addForm.current.validateFields().then(value => {
             console.log(value);
             const birthday = moment(value.birthday.format('YYYY-MM-DD'))._i;
             console.log(birthday);
-            axios.post(`/employee/add`,{
+            axios.post(`/employee/add`, {
                 ...value,
                 birthday
-            }).then(res=>{
-                if(res.data.code === 1){
+            }).then(res => {
+                if (res.data.code === 1) {
                     setOpen(false);
                     message.success("登録成功")
-                }else {
-                    message.error(res.data.message?res.data.message:'登録失敗')
+                } else {
+                    message.error(res.data.message ? res.data.message : '登録失敗')
                 }
 
             })
@@ -189,9 +190,19 @@ export default function Home(props) {
 
     }
     const logout = () => {
-      localStorage.removeItem('token');
+        localStorage.removeItem('token');
         props.history.push(`/login`);
         message.success("ログアウトしました");
+    }
+    const find = () => {
+
+       let value = findInput.current.input.value
+        console.log(value);
+       axios.get(`/employee/find/${value}`).then(res=>{
+           setDataSourse(res.data.data);
+       })
+
+
     }
 
 
@@ -221,34 +232,33 @@ export default function Home(props) {
             <Input style={{
                 width: "200px",
                 left: "70%"
-            }}></Input>
+            }} ref={findInput}></Input>
             <Button style={{
                 left: '72%',
                 backgroundColor: 'rgba(238, 238，238)',
                 color: 'rgba(51, 122, 183)'
-            }}
+            }} onClick={find}
             >社員検索</Button>
 
             <br/> <br/>
 
 
-
             <div>
                 <Table style={{
-                backgroundImage: `url(${BackGround})`,
-                height: "100%",
-                backgroundSize: '100% 100%',
-            }}
+                    backgroundImage: `url(${BackGround})`,
+                    height: "100%",
+                    backgroundSize: '100% 100%',
+                }}
 
                        size='middle'
 
                        dataSource={dataSource}
-                        columns={columns}
-                        rowKey={item => item.empCd}
-                        pagination={{
-                            pageSize: 6
-                        }}
-            /></div>
+                       columns={columns}
+                       rowKey={item => item.empCd}
+                       pagination={{
+                           pageSize: 6
+                       }}
+                /></div>
 
             <Modal
                 open={open}
@@ -258,7 +268,7 @@ export default function Home(props) {
                 onCancel={() => setOpen(false)}
                 onOk={addFormOk}
             >
-                <UserForm  ref={addForm}></UserForm>
+                <UserForm ref={addForm}></UserForm>
             </Modal>
 
             {/*<Modal*/}
