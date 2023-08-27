@@ -12,7 +12,7 @@ import UserForm from "../../../components/user-manage/UserForm";
 import moment from "moment";
 
 
-export default function Home() {
+export default function Home(props) {
     const [dataSource, setDataSourse] = useState([])
     const [open, setOpen] = useState(false)
 
@@ -177,7 +177,7 @@ export default function Home() {
                 ...value,
                 birthday
             }).then(res=>{
-                if(res.data.code === 0){
+                if(res.data.code === 1){
                     setOpen(false);
                     message.success("登録成功")
                 }else {
@@ -187,6 +187,11 @@ export default function Home() {
             })
         })
 
+    }
+    const logout = () => {
+      localStorage.removeItem('token');
+        props.history.push(`/login`);
+        message.success("ログアウトしました");
     }
 
 
@@ -210,7 +215,7 @@ export default function Home() {
                     left: '82%',
                     backgroundColor: 'rgba(240, 173, 78)',
                     color: 'white'
-                }}>ログアウト</Button>
+                }} onClick={() => logout(true)}>ログアウト</Button>
             </div>
             <br/>
             <Input style={{
