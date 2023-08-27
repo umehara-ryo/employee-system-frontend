@@ -20,7 +20,6 @@ export default function Login(props) {
         //         message.error("ユーザー名とパスワードを正しく入力してください！")
         //     }
         // })
-
         axios.post(`/employee/login`, {
             accountId: values.accountId,
             password: values.password
