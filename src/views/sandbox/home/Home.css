@@ -1,0 +1,7 @@
+td,th,tr,thead{
+background:url(../../../resources/img/background1.jpg)
+}
+
+.ant-table-cell{
+background: url(../../../resources/img/background1.jpg) !important;
+}

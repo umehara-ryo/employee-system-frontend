@@ -1,244 +1,228 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {Col, Drawer, List, Row} from "antd";
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import React, {useEffect, useState} from 'react'
+import {Button, Input, Modal, Popover, Row, Switch, Table, Tag} from "antd";
+import {
+    DeleteOutlined,
+    EditOutlined,
+    ExclamationCircleOutlined,
+} from '@ant-design/icons';
 import axios from "axios";
-import * as ECharts from 'echarts';
-import _ from 'lodash';
-
-const { Meta } = Card;
-
-const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-];
+import './Home.css'
+import BackGround from '../../../resources/img/background1.jpg'
 
 
 export default function Home() {
-    const [open, setOpen] = useState(false);
-    const [pieChart, setPieChart] = useState(null);
-    const [viewList,setViewList] = useState([]);
-    const [starList,setStarList] = useState([]);
-    const [allList, setallList] = useState([])
-    const barRef = useRef();
-    const pieRef = useRef();
-    useEffect(()=>{
-        axios.get('/news?publishState=2&_expand=category&_sort=view&_order=desc&_limit=6')
-            .then(res=>{
-                console.log(res.data)
-                setViewList(res.data);
-            })
-    },[])
-
-    useEffect(()=>{
-        axios.get('/news?publishState=2&_expand=category&_sort=star&_order=desc&_limit=6')
-            .then(res=>{
-                console.log(res.data)
-                setStarList(res.data);
-            })
-    },[])
-
+    const [dataSource, setDataSourse] = useState([])
     useEffect(() => {
-
-        axios.get("/news?publishState=2&_expand=category").then(res => {
-            // console.log(res.data)
-            // console.log()
-            renderBarView(_.groupBy(res.data, item => item.category.title))
-
-            setallList(res.data)
+        axios.get('/employee/search').then(res => {
+            console.log(res);
+            setDataSourse(res.data.data)
         })
-
-        return () => {
-            window.onresize = null
-        }
     }, [])
 
-    const user = JSON.parse(localStorage.getItem('token'));
+    const columns = [
+        {
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>社員番号</div>,
+            dataIndex: 'empCd',
+            align:"center",
+            render: (empCd) => {
+                return <div style={{
+                    color: "#337ab7"
+                }}>{empCd}</div>
+            }
+        },
+        {
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>名前</div>,
+            align:"center",
+            dataIndex: 'name',
+            render: (name) => {
+                return <i style={{
+                    color: "#337ab7"
+                }}>{name}</i>
+            }
+        },
+        {
 
-    const renderBarView = (obj) => {
-        var myChart = ECharts.init(barRef.current);
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>生年月日</div>,
+            dataIndex: 'birthday',
+            align:"center",
+            render: (birthday) => {
+                return <div style={{
+                    color:'#337ab7'
+                }}>{birthday}</div>
+            }
+        },
 
-        // チャートの構成項目とデータを指定する
-        var option = {
-            title: {
-                text: 'ニュースカテゴリ図'
-            },
-            tooltip: {},
-            legend: {
-                data: ['数']
-            },
-            xAxis: {
-                data: Object.keys(obj),
-                axisLabel: {
-                    rotate: "45",
-                    interval: 0
-                }
-            },
-            yAxis: {
-                minInterval: 1
-            },
-            series: [{
-                name: '数',
-                type: 'bar',
-                barWidth:'25%',
-                data: Object.values(obj).map(item => item.length)
-            }]
-        };
+        {
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>国籍</div>,
+            align:"center",
+            dataIndex: 'nationalityName',
+            render: (nationalityName) => {
+                return <div style={{
+                    color:'#337ab7'
+                }} >{nationalityName}</div>
+            }
+        },
+        {
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>性別</div>,
+            align:"center",
+            dataIndex: 'genderName',
+            render: (genderName) => {
+                return <Tag color={genderName === '女性' ? 'lightpink' : '#337ab7'}>{genderName}</Tag>
+            }
+        },
+        {
+            title: () => <div style={{
+                fontSize: '16px',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                //backgroundImage: `url(${BackGround})`,
+                color: "#337ab7"
+            }}>操作</div>,
+            align:"center",
+            render: (item) => {
+                return <div>
 
-        // 指定した構成項目とデータを使用して、グラフで表示する
-        myChart.setOption(option);
+                    <Button type="primary" style={{backgroundColor:'#337ab7'}}>変更</Button>
 
+                    <Button danger onClick={() => confirmDelete(item)}>削除</Button>
+                </div>
+            }
+        },
+    ];
 
-        window.onresize = () => {
-            // console.log("resize")
-            myChart.resize()
+    const switchMethod = (item) => {
+        item.pagepermisson = item.pagepermisson === 1 ? 0 : 1;
+        console.log(item);
+        setDataSourse([...dataSource]);
+        if (item.grade === 1) {
+            axios.patch(`http://localhost:5000/rights/${item.id}`, {pagepermisson: item.pagepermisson});
+        } else {
+            axios.patch(`http://localhost:5000/children/${item.id}`, {pagepermisson: item.pagepermisson});
         }
+    };
+
+    const {confirm} = Modal;
+    const confirmDelete = (item) => {
+        confirm({
+            title: 'Confirm',
+            icon: <ExclamationCircleOutlined/>,
+            content: '削除しますか',
+            okText: '削除',
+            cancelText: 'キャンセル',
+            onOk() {
+                console.log('OK');
+                deleteMethod(item);
+            },
+            onCancel() {
+                console.log('Cancel');
+            }
+        });
     }
-
-
-    const renderPieView = (obj) => {
-        //データ処理
-
-        var currentList =allList.filter(item=>item.author===user.username)
-        var groupObj = _.groupBy(currentList,item=>item.category.title)
-        var list = []
-        for(var i in groupObj){
-            list.push({
-                name:i,
-                value:groupObj[i].length
+    const deleteMethod = (item) => {
+        if (item.grade === 1) {
+            console.log(item);
+            setDataSourse(dataSource.filter(data => data.id !== item.id));
+            axios.delete(`http://localhost:5000/rights/${item.id}`);
+        } else {
+            const rightId = item.rightId;
+            let list = dataSource.filter(data => data.id === rightId)
+            console.log(list)
+            list[0].children = list[0].children.filter(data => data.id !== item.id);
+            // console.log(list)
+            // console.log(item.id)
+            // console.log(list[0].children)
+            const newData = dataSource.filter(() => true);
+            newData.forEach(item => {
+                if (item.id === rightId) {
+                    item.children = list[0].children;
+                }
             })
+            setDataSourse(newData);
+            //axios.delete(`http://localhost:5000/children/${item.id}`);
         }
-        console.log(list);
-        var myChart;
-        if(!pieChart){
-            myChart = ECharts.init(pieRef.current);
-            setPieChart(myChart)
-        }else{
-            myChart = pieChart
-        }
-        var option;
-
-        option = {
-            title: {
-                text: '現ユーザーニュースカテゴリ図',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                orient: 'vertical',
-                left: 'left',
-            },
-            series: [
-                {
-                    name: '公開数',
-                    type: 'pie',
-                    radius: '50%',
-                    data: list,
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }
-            ]
-        };
-
-        option && myChart.setOption(option);
-
     }
-
-    const showDrawer = () => {
-        setTimeout(()=>{
-            setOpen(true);
-            renderPieView();
-        },0)
-
-    };
-    const onClose = () => {
-        setOpen(false);
-    };
-
     return (
+
+
         <div>
-            <Row gutter={16}>
-                <Col span={8}>
-                    <Card title="最もよく訪れる" bordered={true}>
-                        <List
-                            size="small"
-                            //header={<div>Header</div>}
-                            //footer={<div>Footer</div>}
-                            //bordered
-                            dataSource={viewList}
-                            renderItem={(item) => <List.Item><a href={`#/news-manage/preview/${item.id}`}>{item.title}</a></List.Item>}
-                        />
-                    </Card>
-                </Col>
-                <Col span={8}>
-                    <Card title="最も多くのいいねを受ける" bordered={true}>
-                        <List
-                            size="small"
-                            //header={<div>Header</div>}
-                            //footer={<div>Footer</div>}
-                            //bordered
-                            dataSource={starList}
-                            renderItem={(item) => <List.Item><a href={`#/news-manage/preview/${item.id}`}>{item.title}</a></List.Item>}
-                        />
-                    </Card>
-                </Col>
-                <Col span={8}>
-                    <Card
-                        style={{
-                            width: 300,
+            <div style={{
+                color: "#337ab7",
+                fontSize: '30px',
+                textAlign: "center"
+            }}>社員情報一覧<br/></div>
+
+            <div>
+                <Button style={{
+                    left: '80%',
+                    backgroundColor: 'rgba(92,184,92)',
+                    color: 'white'
+                }}>社員登録</Button>
+                <Button style={{
+                    left: '82%',
+                    backgroundColor: 'rgba(240, 173, 78)',
+                    color: 'white'
+                }}>ログアウト</Button>
+            </div>
+            <br/>
+            <Input style={{
+                width: "200px",
+                left: "70%"
+            }}></Input>
+            <Button style={{
+                left: '72%',
+                backgroundColor: 'rgba(238, 238，238)',
+                color: 'rgba(51, 122, 183)'
+            }}>社員検索</Button>
+
+            <br/> <br/>
+
+            <div>
+                <Table style={{
+                backgroundImage: `url(${BackGround})`,
+                height: "100%",
+                backgroundSize: '100% 100%',
+            }}
+
+                       size='middle'
+
+                       dataSource={dataSource}
+                        columns={columns}
+                        rowKey={item => item.empCd}
+                        pagination={{
+                            pageSize: 6
                         }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                            />
-                        }
-                        actions={[
-                            <SettingOutlined key="setting" onClick={showDrawer}/>,
-                            <EditOutlined key="edit" />,
-                            <EllipsisOutlined key="ellipsis" />,
-                        ]}
-                    >
-                        <Meta
-                            avatar={<Avatar src="https://web-umehara.oss-cn-hangzhou.aliyuncs.com/497b03ee-cab0-415a-95a2-1a66a4f5172b.jpg" />}
-                            title={user.username}
-                            description={
-                                <div>
-                                    <b>{user.region?user.region:'グローバル'}</b>
-                                    <span style={{
-                                        paddingLeft:'20px'
-                                    }}>{user.role.roleName}</span>
+            /></div>
 
-                                </div>
-                            }
-                        />
-                    </Card>
-                </Col>
-            </Row>
-
-            <Drawer  width='500px' title="個人情報" placement="right" onClose={onClose} open={open}>
-                <div ref={pieRef} style={{
-                    width: '100%',
-                    height: "400px",
-                    marginTop: "30px"
-                }}></div>
-            </Drawer>
-
-            <div ref={barRef} style={{
-                width: '100%',
-                height: "400px",
-                marginTop: "30px"
-            }}></div>
         </div>
     )
 }

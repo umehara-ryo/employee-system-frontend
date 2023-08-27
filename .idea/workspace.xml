@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="513429c8-25f9-416c-9383-6762f6a3b245" name="Changes" comment="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって">
+      <change afterPath="$PROJECT_DIR$/src/views/sandbox/home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/sandbox/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/sandbox/home/Home.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ea10cba631431cde4591d441c53d357584a9ec9a" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/rc-motion/es/context.d.ts" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="2UBsceYs42HyTqgl1ZMTfYQsiwR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/sandbox/publish-manage" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="E:\10JavaTools\idea\IntelliJ IDEA 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workspace\react\news-system\src\views\sandbox\publish-manage" />
+      <recent name="E:\workspace\react\news-system\src\views\sandbox\audit-manage" />
+      <recent name="E:\workspace\react\news-system" />
+      <recent name="E:\workspace\react\news-system\src" />
+      <recent name="E:\workspace\react\news-system\src\components\sandbox" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\7任務\8最終章\employee-system-frontend\src\resources\img" />
+      <recent name="E:\workspace\react\news-system\src\components\news-manage" />
+      <recent name="E:\workspace\react\news-system\src\views\sandbox\nopermission" />
+      <recent name="E:\workspace\react\news-system\src\views\sandbox" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="513429c8-25f9-416c-9383-6762f6a3b245" name="Changes" comment="" />
+      <created>1692424390026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692424390026</updated>
+      <workItem from="1692424391796" duration="4945000" />
+      <workItem from="1692435718269" duration="11233000" />
+      <workItem from="1692498991249" duration="28496000" />
+      <workItem from="1692581121885" duration="30755000" />
+      <workItem from="1692670352879" duration="29018000" />
+      <workItem from="1692752583679" duration="23535000" />
+      <workItem from="1692843655209" duration="27810000" />
+      <workItem from="1692929410052" duration="23598000" />
+      <workItem from="1692962763616" duration="6259000" />
+      <workItem from="1693014415074" duration="3290000" />
+      <workItem from="1693018518648" duration="16815000" />
+      <workItem from="1693041259026" duration="8457000" />
+      <workItem from="1693051142344" duration="82000" />
+      <workItem from="1693053084217" duration="3563000" />
+      <workItem from="1693056815401" duration="617000" />
+      <workItem from="1693105557616" duration="10755000" />
+    </task>
+    <task id="LOCAL-00024" summary="ユーザーリストページ追加業務　フォーム作成　完成&#10;1.&lt;Option&gt;を利用して&#10;2.&lt;Select&gt;と&lt;Option&gt;タグを利用して">
+      <created>1692617433018</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1692617433018</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ユーザーリストページ追加業務　UserFormカプセル化　完成&#10;1.UserFormをUserListから分離させ">
+      <created>1692618663908</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1692618663908</updated>
+    </task>
+    <task id="LOCAL-00026" summary="ユーザーリストページ追加業務開発　完成&#10;1.axios.postのthenメソッドにaxios.getを重ねる&#10;2.setDataSourCeはデータベースに挿入し、IDを返す後の仕事">
+      <created>1692623352593</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1692623352593</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ユーザーリストページ削除業務開発　完成">
+      <created>1692676700530</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1692676700531</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ユーザーリストページ状態変更業務開発　完成">
+      <created>1692678605852</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1692678605852</updated>
+    </task>
+    <task id="LOCAL-00029" summary="ユーザーリストページデータの再表示業務開発　完成&#10;1.スーパータグからサブタグ、isUpdateDisabledを渡す">
+      <created>1692690365790</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1692690365790</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ユーザーリストページデータ情報変更業務開発　完成&#10;1.frontendとbackend両方の更新">
+      <created>1692692454625</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1692692454625</updated>
+    </task>
+    <task id="LOCAL-00031" summary="ユーザーリストページデータ地域別でフィルタリング業務開発　完成&#10;1.filtersとonFilter関数で実現">
+      <created>1692693179602</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1692693179602</updated>
+    </task>
+    <task id="LOCAL-00032" summary="戻るボタン業務開発　完成&#10;1.withRouter&#10;2.props.history.replace('/login')">
+      <created>1692694603091</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1692694603091</updated>
+    </task>
+    <task id="LOCAL-00033" summary="ログインページの骨組み構築　完成">
+      <created>1692698926539</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1692698926539</updated>
+    </task>
+    <task id="LOCAL-00034" summary="ログイン審査業務開発　完成&#10;1.データベースとの対照&#10;2.topHeaderとsideMenuの動的表示">
+      <created>1692702677203</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1692702677203</updated>
+    </task>
+    <task id="LOCAL-00035" summary="ユーザーリスト機能補強　完成&#10;1.職位による、権限動的表示するようになる">
+      <created>1692704254672</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1692704254672</updated>
+    </task>
+    <task id="LOCAL-00036" summary="ユーザーリスト機能補強2　完成&#10;1.職位によって、変更と追加によって、&lt;Option&gt;を無効化する&#10;2.アロー関数を連続に利用するとき、戻り値が紛失可能性がある、要注意">
+      <created>1692709550159</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1692709550159</updated>
+    </task>
+    <task id="LOCAL-00037" summary="ルーティングの再配置　完成&#10;1.新しきコンポとページを作成">
+      <created>1692761104038</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1692761104038</updated>
+    </task>
+    <task id="LOCAL-00038" summary="ルーティングの動的パス　完成&#10;1.Promise.allによって、同期化&#10;2.exactによって、的確にマッチングする&#10;3.&lt;Route&gt;の下にpathなしの&lt;Route&gt;を作成すると、深刻な問題が発生">
+      <created>1692767355212</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1692767355212</updated>
+    </task>
+    <task id="LOCAL-00039" summary="ルーティングの開発　完成&#10;1.プログレスバーを創出">
+      <created>1692768200157</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768200157</updated>
+    </task>
+    <task id="LOCAL-00040" summary="axiosのグローバル設定　完成">
+      <created>1692768479241</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1692768479241</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ニュース作成ページ枠組み構築　完成&#10;1.プログレスバーの利用&#10;2.動的にフォームの表示">
+      <created>1692779025617</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1692779025617</updated>
+    </task>
+    <task id="LOCAL-00042" summary="ニュース編纂ページステップ1　完成&#10;1.選択ボックスの選択&#10;2.useRefでフォーム情報の校閲">
+      <created>1692781566748</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1692781566748</updated>
+    </task>
+    <task id="LOCAL-00043" summary="ニュース編纂ページステップ2　完成&#10;1.テキストの伝送">
+      <created>1692786078067</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1692786078067</updated>
+    </task>
+    <task id="LOCAL-00044" summary="ニュース編纂ページステップ3　完成&#10;1.下書き箱に保存&#10;2.審査リストに提出">
+      <created>1692851497400</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1692851497400</updated>
+    </task>
+    <task id="LOCAL-00045" summary="下書き箱ページ初期化　完成&#10;1.テーブルと削除業務完成&#10;2.TableにrowKeyを付けないといけない">
+      <created>1692856607940</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1692856607940</updated>
+    </task>
+    <task id="LOCAL-00046" summary="下書き箱ページ初期化　完成&#10;1.Drawerの利用&#10;2.props.match.params.idで動的ルーティングパスをゲット">
+      <created>1692869447019</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1692869447019</updated>
+    </task>
+    <task id="LOCAL-00047" summary="previewページ開発　完成&#10;1.Drawerの利用&#10;2.props.match.params.idで動的ルーティングパスをゲット">
+      <created>1692872361140</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1692872361140</updated>
+    </task>
+    <task id="LOCAL-00048" summary="下書き箱の更新ページ開発　完成&#10;1.defaultValueとpropsの利用">
+      <created>1692882041646</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1692882041646</updated>
+    </task>
+    <task id="LOCAL-00049" summary="下書き箱の提出業務開発　完成">
+      <created>1692882492412</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1692882492412</updated>
+    </task>
+    <task id="LOCAL-00050" summary="審査リストページ枠組み構築　完成&#10;1.公開状態による色が変わる">
+      <created>1692940563458</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1692940563459</updated>
+    </task>
+    <task id="LOCAL-00051" summary="審査リストページ機能追加　完成&#10;1.撤回&#10;2.修正&#10;3.公開">
+      <created>1692944100706</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1692944100706</updated>
+    </task>
+    <task id="LOCAL-00052" summary="ニュース審査ページ業務開発　完成">
+      <created>1692946967894</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1692946967895</updated>
+    </task>
+    <task id="LOCAL-00053" summary="NewPublishというコンポの作成　完成">
+      <created>1692951764359</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1692951764359</updated>
+    </task>
+    <task id="LOCAL-00054" summary="公開管理ページの作成　完成">
+      <created>1692951901952</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1692951901952</updated>
+    </task>
+    <task id="LOCAL-00055" summary="公開管理ページのカスタムフックス作成　完成&#10;1.アロー関数でサブタグからデータをとる">
+      <created>1692962716884</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1692962716884</updated>
+    </task>
+    <task id="LOCAL-00056" summary="公共状態管理　サイドバーの折り畳み　完成&#10;1.reduxの利用">
+      <created>1692968931685</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1692968931686</updated>
+    </task>
+    <task id="LOCAL-00057" summary="ニュース分類　バグ修正　完成">
+      <created>1693014463292</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1693014463293</updated>
+    </task>
+    <task id="LOCAL-00058" summary="ホームページの枠組み構築　完成">
+      <created>1693024261974</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1693024261974</updated>
+    </task>
+    <task id="LOCAL-00059" summary="ホームページ開発棒グラフ　完成">
+      <created>1693026216679</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1693026216679</updated>
+    </task>
+    <task id="LOCAL-00060" summary="ホームページ円グラフ開発　完成&#10;1.echartsを利用">
+      <created>1693027876396</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1693027876396</updated>
+    </task>
+    <task id="LOCAL-00061" summary="ゲストページのルーティング構築　完成">
+      <created>1693030499115</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1693030499115</updated>
+    </task>
+    <task id="LOCAL-00062" summary="ゲストニュースページ開発　完成&#10;1.cardタグとlistタグの利用">
+      <created>1693035537709</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1693035537709</updated>
+    </task>
+    <task id="LOCAL-00063" summary="ゲストディテールページ開発　完成&#10;1.useEffectでview数を記録">
+      <created>1693038294329</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1693038294329</updated>
+    </task>
+    <task id="LOCAL-00064" summary="umehara">
+      <created>1693056046639</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1693056046640</updated>
+    </task>
+    <task id="LOCAL-00065" summary="ルーティング構築　完成枠">
+      <created>1693056409781</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1693056409781</updated>
+    </task>
+    <task id="LOCAL-00066" summary="社員登録業務開発　完成">
+      <created>1693056450897</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1693056450897</updated>
+    </task>
+    <task id="LOCAL-00067" summary="社員登録最適化　完成&#10;1.getリクエストからpostリクエストへ変換した">
+      <created>1693057229236</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1693057229236</updated>
+    </task>
+    <task id="LOCAL-00068" summary="403ページ開発　完成&#10;1.&lt;Route path=&quot;*&quot;/&gt;で完成">
+      <created>1693107311891</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1693107311891</updated>
+    </task>
+    <task id="LOCAL-00069" summary="403ページ開発　完成&#10;1.&lt;Route path=&quot;*&quot;/&gt;で完成">
+      <created>1693107559961</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1693107559961</updated>
+    </task>
+    <task id="LOCAL-00070" summary="403ページ開発　完成&#10;1.&lt;Route path=&quot;*&quot;/&gt;で完成">
+      <created>1693108250908</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1693108250908</updated>
+    </task>
+    <task id="LOCAL-00071" summary="ログインページ開発　完成&#10;1.POSTリクエストによって">
+      <created>1693108305062</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1693108305062</updated>
+    </task>
+    <task id="LOCAL-00072" summary="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって">
+      <created>1693108372412</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1693108372412</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="umehara" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="下書き箱の更新ページデータの再表示　完成&#10;1.refの利用" />
+    <MESSAGE value="下書き箱の更新ページ開発　完成&#10;1.defaultValueとpropsの利用" />
+    <MESSAGE value="下書き箱の提出業務開発　完成" />
+    <MESSAGE value="審査リストページ枠組み構築　完成&#10;1.公開状態による色が変わる" />
+    <MESSAGE value="審査リストページ機能追加　完成&#10;1.撤回&#10;2.修正&#10;3.公開" />
+    <MESSAGE value="ニュース審査ページ業務開発　完成" />
+    <MESSAGE value="NewPublishというコンポの作成　完成" />
+    <MESSAGE value="公開管理ページの作成　完成" />
+    <MESSAGE value="公開管理ページのカスタムフックス作成　完成&#10;1.アロー関数でサブタグからデータをとる" />
+    <MESSAGE value="公共状態管理　サイドバーの折り畳み　完成&#10;1.reduxの利用" />
+    <MESSAGE value="ニュース分類　バグ修正　完成" />
+    <MESSAGE value="ホームページの枠組み構築　完成" />
+    <MESSAGE value="ホームページ開発棒グラフ　完成" />
+    <MESSAGE value="ホームページ円グラフ開発　完成&#10;1.echartsを利用" />
+    <MESSAGE value="ゲストページのルーティング構築　完成" />
+    <MESSAGE value="ゲストニュースページ開発　完成&#10;1.cardタグとlistタグの利用" />
+    <MESSAGE value="ゲストディテールページ開発　完成&#10;1.useEffectでview数を記録" />
+    <MESSAGE value="uemehara" />
+    <MESSAGE value="umehara" />
+    <MESSAGE value="ルーティング構築　完成枠" />
+    <MESSAGE value="社員ログイン業務開発　完成" />
+    <MESSAGE value="社員登録最適化　完成&#10;1.getリクエストからpostリクエストへ変換した" />
+    <MESSAGE value="403ページ開発　完成&#10;1.&lt;Route path=&quot;*&quot;/&gt;で完成" />
+    <MESSAGE value="ログインページ開発　完成&#10;1.POSTリクエストによって" />
+    <MESSAGE value="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって" />
+    <option name="LAST_COMMIT_MESSAGE" value="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって" />
+  </component>
+</project>
