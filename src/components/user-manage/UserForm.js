@@ -1,7 +1,9 @@
-import {Form, Modal, Select} from "antd";
+import {DatePicker, Form, Modal, Select} from "antd";
 import Input from "antd/es/input/Input";
 import {Option} from "antd/es/mentions";
+import dayjs from 'dayjs';
 import React, {forwardRef, useEffect, useState} from "react";
+const dateFormat = 'YYYY-MM-DD';
 
 const UserForm = forwardRef((props,ref) =>{
 
@@ -59,78 +61,57 @@ const UserForm = forwardRef((props,ref) =>{
                 layout="vertical"
             >
                 <Form.Item
-                    name="username"
-                    label="ユーザー名"
+                    name="name"
+                    label="名前"
                     rules={[
                         {
                             required: true,
-                            message: 'ユーザー名をご入力ください!',
+                            message: '名前をご入力ください!',
                         },
                     ]}
                 >
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    name="password"
-                    label="パスワード"
+                    name="birthday"
+                    label="生年月日"
                     rules={[
                         {
                             required: true,
-                            message: 'パスワードをご入力ください!',
+                            message: '生年月日をご入力ください!',
+                        },
+                    ]}
+                >
+                    <DatePicker defaultValue={dayjs('2023/08/27', dateFormat)} format={dateFormat} />
+                </Form.Item>
+
+                <Form.Item
+                    name="nationalityName"
+                    label="国籍"
+                    rules={[
+                        {
+                            required: true,
+                            message: '国籍をご入力ください!',
                         },
                     ]}
                 >
                     <Input/>
                 </Form.Item>
+
                 <Form.Item
-                    name="region"
-                    label="地域"
-                    rules={isDisabled ? [] : [
+                    name="genderCd"
+                    label="性別"
+                    rules= {[
                         {
                             required: true,
-                            message: '地域をお選びください!',
+                            message: '性別をお選びください!',
                         },
                     ]}
                 >
-                    <Select disabled={isDisabled}>
-                        {
-                            regionList.map((item) => {
-                                    return <Select.Option  disabled={checkRegionDisabled(item)} value={item.value} key={item.id}>{item.title}</Select.Option>
-                                }
-                            )
-
-                        }
-                    </Select>
-                </Form.Item>
-                <Form.Item
-                    name="roleId"
-                    label="ロール"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'ロールをお選びください!',
-                        },
-                    ]}
-                >
-                    <Select onChange={(value)=>{
-
-                        if(value === 1){
-                            setIsDisabled(true);
-                            ref.current.setFieldsValue({
-                                region:""
-                            })
-                        }else {
-                            setIsDisabled(false);
-                            //console.log(isDisabled);
-                        }
-
-                    }}>
-                        {
-                            roleList.map((item) => {
-                                    return <Select.Option disabled={checkRoleDisabled(item)} value={item.id} key={item.id}>{item.roleName}</Select.Option>
-                                }
-                            )
-                        }
+                    <Select>
+                        <Select.Option value='01'  key='01'>女性</Select.Option>
+                        <Select.Option value='02'  key='02'>男性</Select.Option>
+                        <Select.Option value='03'  key='03'>不明</Select.Option>
                     </Select>
                 </Form.Item>
             </Form>

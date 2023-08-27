@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {Button, Input, Modal, Popover, Row, Switch, Table, Tag} from "antd";
+import React, {useEffect, useRef, useState} from 'react'
+import {Button, Input, message, Modal, Popover, Row, Switch, Table, Tag} from "antd";
 import {
     DeleteOutlined,
     EditOutlined,
@@ -8,10 +8,17 @@ import {
 import axios from "axios";
 import './Home.css'
 import BackGround from '../../../resources/img/background1.jpg'
+import UserForm from "../../../components/user-manage/UserForm";
+import moment from "moment";
 
 
 export default function Home() {
     const [dataSource, setDataSourse] = useState([])
+    const [open, setOpen] = useState(false)
+
+    const addForm = useRef(null);
+    const updateForm = useRef(null);
+
     useEffect(() => {
         axios.get('/employee/search').then(res => {
             console.log(res);
@@ -120,17 +127,6 @@ export default function Home() {
         },
     ];
 
-    const switchMethod = (item) => {
-        item.pagepermisson = item.pagepermisson === 1 ? 0 : 1;
-        console.log(item);
-        setDataSourse([...dataSource]);
-        if (item.grade === 1) {
-            axios.patch(`http://localhost:5000/rights/${item.id}`, {pagepermisson: item.pagepermisson});
-        } else {
-            axios.patch(`http://localhost:5000/children/${item.id}`, {pagepermisson: item.pagepermisson});
-        }
-    };
-
     const {confirm} = Modal;
     const confirmDelete = (item) => {
         confirm({
@@ -171,6 +167,29 @@ export default function Home() {
             //axios.delete(`http://localhost:5000/children/${item.id}`);
         }
     }
+
+    const addFormOk = () => {
+        addForm.current.validateFields().then(value=>{
+            console.log(value);
+            const birthday = moment(value.birthday.format('YYYY-MM-DD'))._i;
+            console.log(birthday);
+            axios.post(`/employee/add`,{
+                ...value,
+                birthday
+            }).then(res=>{
+                if(res.data.code === 0){
+                    setOpen(false);
+                    message.success("登録成功")
+                }else {
+                    message.error(res.data.message?res.data.message:'登録失敗')
+                }
+
+            })
+        })
+
+    }
+
+
     return (
 
 
@@ -186,7 +205,7 @@ export default function Home() {
                     left: '80%',
                     backgroundColor: 'rgba(92,184,92)',
                     color: 'white'
-                }}>社員登録</Button>
+                }} onClick={() => setOpen(true)}>社員登録</Button>
                 <Button style={{
                     left: '82%',
                     backgroundColor: 'rgba(240, 173, 78)',
@@ -202,9 +221,12 @@ export default function Home() {
                 left: '72%',
                 backgroundColor: 'rgba(238, 238，238)',
                 color: 'rgba(51, 122, 183)'
-            }}>社員検索</Button>
+            }}
+            >社員検索</Button>
 
             <br/> <br/>
+
+
 
             <div>
                 <Table style={{
@@ -223,6 +245,28 @@ export default function Home() {
                         }}
             /></div>
 
+            <Modal
+                open={open}
+                title="新規追加"
+                okText="追加"
+                cancelText="キャンセル"
+                onCancel={() => setOpen(false)}
+                onOk={addFormOk}
+            >
+                <UserForm  ref={addForm}></UserForm>
+            </Modal>
+
+            {/*<Modal*/}
+            {/*    open={updateOpen}*/}
+            {/*    title="情報変更"*/}
+            {/*    okText="変更"*/}
+            {/*    cancelText="キャンセル"*/}
+            {/*    onCancel={() => setUpdateOpen(false)}*/}
+            {/*    onOk={() => updateFormOk()}*/}
+            {/*>*/}
+            {/*    <UserForm regionList={regionList} roleList={roleList} ref={updateForm}*/}
+            {/*              isUpdateDisabled={isUpdateDisabled} isUpdate={1}></UserForm>*/}
+            {/*</Modal>*/}
         </div>
     )
 }
