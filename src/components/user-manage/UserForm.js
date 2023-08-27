@@ -11,50 +11,6 @@ const UserForm = forwardRef((props,ref) =>{
 
     const [isDisabled,setIsDisabled] = useState(false);
 
-    useEffect(()=>{
-        setIsDisabled(isUpdateDisabled);
-    },[isUpdateDisabled])
-
-    const {roleId,region} = JSON.parse(localStorage.getItem('token'));
-
-    const checkRegionDisabled = (item) => {
-        //変更業務
-        if(isUpdate===1){
-            //superAdminの場合
-            if(roleId===1){
-                return false;
-            }else{
-                return true;
-            }
-        //追加業務
-        }else {
-            //superAdminの場合
-            if(roleId===1){
-                return false;
-            }else{
-               return region !== item.value;
-            }
-        }
-    }
-    const checkRoleDisabled = (item) => {
-        //変更業務
-        if(isUpdate===1){
-            //superAdminの場合
-            if(roleId===1){
-                return false;
-            }else{
-                return roleId >= item.id;
-            }
-        //追加業務
-        }else {
-            //superAdminの場合
-            if(roleId===1){
-                return false;
-            }else{
-               return roleId >= item.id;
-            }
-        }
-    }
 
     return(
             <Form ref={ref}
@@ -82,7 +38,7 @@ const UserForm = forwardRef((props,ref) =>{
                         },
                     ]}
                 >
-                    <DatePicker defaultValue={dayjs('2023/08/27', dateFormat)} format={dateFormat} />
+                    <DatePicker initialValues={dayjs('2023/08/27', dateFormat)} format={dateFormat} />
                 </Form.Item>
 
                 <Form.Item

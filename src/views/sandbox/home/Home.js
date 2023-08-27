@@ -10,20 +10,24 @@ import './Home.css'
 import BackGround from '../../../resources/img/background1.jpg'
 import UserForm from "../../../components/user-manage/UserForm";
 import moment from "moment";
+import dayjs from "dayjs";
 
 
 export default function Home(props) {
-    const [dataSource, setDataSourse] = useState([])
+    const [dataSource, setDataSource] = useState([])
     const [open, setOpen] = useState(false)
+    const [updateOpen, setUpdateOpen] = useState(false)
+    const [currentUpdate, setCurrentUpdate] = useState(false)
 
     const addForm = useRef(null);
     const updateForm = useRef(null);
     const findInput = useRef(null);
+    
 
     useEffect(() => {
         axios.get('/employee/search').then(res => {
             console.log(res);
-            setDataSourse(res.data.data)
+            setDataSource(res.data.data)
         })
     }, [])
 
@@ -120,7 +124,8 @@ export default function Home(props) {
             render: (item) => {
                 return <div>
 
-                    <Button type="primary" style={{backgroundColor: '#337ab7'}}>変更</Button>
+                    <Button type="primary" style={{backgroundColor: '#337ab7'}}
+                    onClick={()=>update(item)}>変更</Button>
 
                     <Button danger onClick={() => confirmDelete(item)}>削除</Button>
                 </div>
@@ -148,7 +153,7 @@ export default function Home(props) {
     const deleteMethod = (item) => {
         if (item.grade === 1) {
             console.log(item);
-            setDataSourse(dataSource.filter(data => data.id !== item.id));
+            setDataSource(dataSource.filter(data => data.id !== item.id));
             axios.delete(`http://localhost:5000/rights/${item.id}`);
         } else {
             const rightId = item.rightId;
@@ -164,15 +169,32 @@ export default function Home(props) {
                     item.children = list[0].children;
                 }
             })
-            setDataSourse(newData);
+            setDataSource(newData);
             //axios.delete(`http://localhost:5000/children/${item.id}`);
         }
     }
 
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        props.history.push(`/login`);
+        message.success("ログアウトしました");
+    }
+    const find = () => {
+
+       let value = findInput.current.input.value
+        console.log(value);
+       axios.get(`/employee/find/${value}`).then(res=>{
+           setDataSource(res.data.data);
+       })
+
+
+    }
+
+
     const addFormOk = () => {
         addForm.current.validateFields().then(value => {
-            console.log(value);
-            const birthday = moment(value.birthday.format('YYYY-MM-DD'))._i;
+            const birthday =value.birthday.format('YYYY-MM-DD')
             console.log(birthday);
             axios.post(`/employee/add`, {
                 ...value,
@@ -189,18 +211,54 @@ export default function Home(props) {
         })
 
     }
-    const logout = () => {
-        localStorage.removeItem('token');
-        props.history.push(`/login`);
-        message.success("ログアウトしました");
-    }
-    const find = () => {
 
-       let value = findInput.current.input.value
-        console.log(value);
-       axios.get(`/employee/find/${value}`).then(res=>{
-           setDataSourse(res.data.data);
-       })
+    const update = (item) => {
+        setTimeout(()=>{
+
+            setCurrentUpdate(item.empCd);
+            console.log(item.birthday);
+           let birthday = dayjs(item.birthday);
+            setUpdateOpen(true);
+            updateForm.current.setFieldsValue({
+                ...item,
+                birthday
+            });
+        })
+
+
+
+    }
+    const updateFormOk = () => {
+        updateForm.current.validateFields().then(value => {
+            const birthday =value.birthday.format('YYYY-MM-DD')
+            console.log(birthday);
+            value.birthday = birthday;
+            //dataSource更新
+            setDataSource(dataSource.map(item=>{
+                if(item.empCd === currentUpdate){
+                    return {
+                        ...item,
+                        ...value,
+                    }
+                }
+                return item;
+            }))
+            
+            
+            //データベース更新
+            axios.put(`/employee/update`, {
+                ...value,
+                empCd:currentUpdate
+            }).then(res => {
+                if (res.data.code === 1) {
+                    setUpdateOpen(false);
+                    message.success("変更成功")
+                } else {
+                    message.error(res.data.message ? res.data.message : '変更失敗')
+                }
+
+            })
+        })
 
 
     }
@@ -271,17 +329,16 @@ export default function Home(props) {
                 <UserForm ref={addForm}></UserForm>
             </Modal>
 
-            {/*<Modal*/}
-            {/*    open={updateOpen}*/}
-            {/*    title="情報変更"*/}
-            {/*    okText="変更"*/}
-            {/*    cancelText="キャンセル"*/}
-            {/*    onCancel={() => setUpdateOpen(false)}*/}
-            {/*    onOk={() => updateFormOk()}*/}
-            {/*>*/}
-            {/*    <UserForm regionList={regionList} roleList={roleList} ref={updateForm}*/}
-            {/*              isUpdateDisabled={isUpdateDisabled} isUpdate={1}></UserForm>*/}
-            {/*</Modal>*/}
+            <Modal
+                open={updateOpen}
+                title="情報変更"
+                okText="変更"
+                cancelText="キャンセル"
+                onCancel={() => setUpdateOpen(false)}
+                onOk={() => updateFormOk()}
+            >
+                <UserForm  ref={updateForm} isUpdate={1}></UserForm>
+            </Modal>
         </div>
     )
 }
