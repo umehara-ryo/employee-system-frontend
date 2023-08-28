@@ -191,6 +191,11 @@ export default function Home(props) {
                 if (res.data.code === 1) {
                     setOpen(false);
                     message.success("登録成功")
+                    axios.get('/employee/search').then(newRes => {
+                        console.log(newRes);
+                        setDataSource(newRes.data.data)
+                    })
+                    
                 } else {
                     message.error(res.data.message ? res.data.message : '登録失敗')
                 }

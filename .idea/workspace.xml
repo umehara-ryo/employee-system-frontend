@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="513429c8-25f9-416c-9383-6762f6a3b245" name="Changes" comment="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって">
-      <change afterPath="$PROJECT_DIR$/src/views/sandbox/home/Home.css" afterDir="false" />
+    <list default="true" id="513429c8-25f9-416c-9383-6762f6a3b245" name="Changes" comment="社員管理システム　完成">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/sandbox/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/sandbox/home/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,49 +92,9 @@
       <workItem from="1693051142344" duration="82000" />
       <workItem from="1693053084217" duration="3563000" />
       <workItem from="1693056815401" duration="617000" />
-      <workItem from="1693105557616" duration="10755000" />
-    </task>
-    <task id="LOCAL-00024" summary="ユーザーリストページ追加業務　フォーム作成　完成&#10;1.&lt;Option&gt;を利用して&#10;2.&lt;Select&gt;と&lt;Option&gt;タグを利用して">
-      <created>1692617433018</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1692617433018</updated>
-    </task>
-    <task id="LOCAL-00025" summary="ユーザーリストページ追加業務　UserFormカプセル化　完成&#10;1.UserFormをUserListから分離させ">
-      <created>1692618663908</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1692618663908</updated>
-    </task>
-    <task id="LOCAL-00026" summary="ユーザーリストページ追加業務開発　完成&#10;1.axios.postのthenメソッドにaxios.getを重ねる&#10;2.setDataSourCeはデータベースに挿入し、IDを返す後の仕事">
-      <created>1692623352593</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1692623352593</updated>
-    </task>
-    <task id="LOCAL-00027" summary="ユーザーリストページ削除業務開発　完成">
-      <created>1692676700530</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1692676700531</updated>
-    </task>
-    <task id="LOCAL-00028" summary="ユーザーリストページ状態変更業務開発　完成">
-      <created>1692678605852</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1692678605852</updated>
-    </task>
-    <task id="LOCAL-00029" summary="ユーザーリストページデータの再表示業務開発　完成&#10;1.スーパータグからサブタグ、isUpdateDisabledを渡す">
-      <created>1692690365790</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1692690365790</updated>
+      <workItem from="1693105557616" duration="22947000" />
+      <workItem from="1693189176529" duration="308000" />
+      <workItem from="1693189544133" duration="268000" />
     </task>
     <task id="LOCAL-00030" summary="ユーザーリストページデータ情報変更業務開発　完成&#10;1.frontendとbackend両方の更新">
       <created>1692692454625</created>
@@ -437,7 +397,49 @@
       <option name="project" value="LOCAL" />
       <updated>1693108372412</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="社員情報一覧業務開発　完成">
+      <created>1693116627547</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1693116627547</updated>
+    </task>
+    <task id="LOCAL-00074" summary="社員登録業務開発　完成">
+      <created>1693122144524</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1693122144524</updated>
+    </task>
+    <task id="LOCAL-00075" summary="社員ログアウト業務開発　完成&#10;1.localStorageを消す&#10;2.ログインページに移行する">
+      <created>1693128637897</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1693128637897</updated>
+    </task>
+    <task id="LOCAL-00076" summary="社員検索業務開発　完成">
+      <created>1693129902041</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1693129902041</updated>
+    </task>
+    <task id="LOCAL-00077" summary="情報変更業務開発　完成">
+      <created>1693133438153</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1693133438153</updated>
+    </task>
+    <task id="LOCAL-00078" summary="削除業務開発　完成">
+      <created>1693135172454</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1693135172454</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,7 +456,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="umehara" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -471,14 +473,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="下書き箱の更新ページデータの再表示　完成&#10;1.refの利用" />
-    <MESSAGE value="下書き箱の更新ページ開発　完成&#10;1.defaultValueとpropsの利用" />
-    <MESSAGE value="下書き箱の提出業務開発　完成" />
-    <MESSAGE value="審査リストページ枠組み構築　完成&#10;1.公開状態による色が変わる" />
-    <MESSAGE value="審査リストページ機能追加　完成&#10;1.撤回&#10;2.修正&#10;3.公開" />
-    <MESSAGE value="ニュース審査ページ業務開発　完成" />
-    <MESSAGE value="NewPublishというコンポの作成　完成" />
-    <MESSAGE value="公開管理ページの作成　完成" />
     <MESSAGE value="公開管理ページのカスタムフックス作成　完成&#10;1.アロー関数でサブタグからデータをとる" />
     <MESSAGE value="公共状態管理　サイドバーの折り畳み　完成&#10;1.reduxの利用" />
     <MESSAGE value="ニュース分類　バグ修正　完成" />
@@ -496,6 +490,14 @@
     <MESSAGE value="403ページ開発　完成&#10;1.&lt;Route path=&quot;*&quot;/&gt;で完成" />
     <MESSAGE value="ログインページ開発　完成&#10;1.POSTリクエストによって" />
     <MESSAGE value="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって" />
-    <option name="LAST_COMMIT_MESSAGE" value="ルーティング構築　完成&#10;1.&lt;Switch&gt;タグによって" />
+    <MESSAGE value="社員情報一覧業務開発　完成" />
+    <MESSAGE value="社員登録業務開発　完成" />
+    <MESSAGE value="社員ログアウト業務開発　完成" />
+    <MESSAGE value="社員ログアウト業務開発　完成&#10;1.localStorageを消す" />
+    <MESSAGE value="社員ログアウト業務開発　完成&#10;1.localStorageを消す&#10;2.ログインページに移行する" />
+    <MESSAGE value="社員検索業務開発　完成" />
+    <MESSAGE value="情報変更業務開発　完成" />
+    <MESSAGE value="削除業務開発　完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="削除業務開発　完成" />
   </component>
 </project>
